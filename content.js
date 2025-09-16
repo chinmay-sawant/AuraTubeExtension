@@ -4,8 +4,7 @@ class YouTubeGridController {
   constructor() {
     this.settings = {
       columns: 5,
-      spacing: 'normal',
-      removeShorts: false
+      spacing: 'normal'
     };
     this.init();
   }
@@ -35,13 +34,11 @@ class YouTubeGridController {
       if (request.action === 'applySettings') {
         this.settings.columns = parseInt(request.columns);
         this.settings.spacing = request.spacing;
-        this.settings.removeShorts = request.removeShorts || false;
 
         // Save to storage
         chrome.storage.sync.set({
           columns: this.settings.columns,
-          spacing: this.settings.spacing,
-          removeShorts: this.settings.removeShorts
+          spacing: this.settings.spacing
         });
 
         // Apply changes immediately
@@ -54,10 +51,9 @@ class YouTubeGridController {
 
   async loadSettings() {
     return new Promise((resolve) => {
-      chrome.storage.sync.get(['columns', 'spacing', 'removeShorts'], (result) => {
+      chrome.storage.sync.get(['columns', 'spacing'], (result) => {
         this.settings.columns = result.columns || 5;
         this.settings.spacing = result.spacing || 'normal';
-        this.settings.removeShorts = result.removeShorts || false;
         resolve();
       });
     });
@@ -85,8 +81,6 @@ class YouTubeGridController {
             clearTimeout(this.debounceTimer);
             this.debounceTimer = setTimeout(() => {
               this.applyGridChanges();
-              // Also check for Shorts sections on DOM changes
-              this.removeShortsSection();
             }, 100);
           }
         });
@@ -175,9 +169,6 @@ class YouTubeGridController {
       // container.style.display = '';
     });
 
-    // Handle Shorts removal
-    this.removeShortsSection();
-
     // Remove any ytd-rich-item-renderer elements that don't have items-per-row attribute
     this.removeItemsWithoutAttribute();
 
@@ -188,50 +179,6 @@ class YouTubeGridController {
       items.forEach(item => {
         item.setAttribute('items-per-row', Math.min(this.settings.columns, 6)); // Limit shelf items to 6 max
       });
-    });
-  }
-
-  removeShortsSection() {
-    // Only remove Shorts if the setting is enabled
-    if (!this.settings.removeShorts) {
-      return;
-    }
-
-    console.log('YouTube Grid Control: Checking for Shorts sections to remove');
-
-    // Find all rich shelf renderers
-    const shelfRenderers = document.querySelectorAll('ytd-rich-shelf-renderer');
-
-    shelfRenderers.forEach(shelf => {
-      // Check if this is a Shorts shelf by looking for the Shorts icon or title
-      const titleElement = shelf.querySelector('#title');
-      const hasShortsIcon = shelf.querySelector('path[d*="m19.45,3.88c1.12,1.82.48,4.15-1.42,5.22"]');
-
-      if (titleElement && titleElement.textContent.trim() === 'Shorts') {
-        console.log('YouTube Grid Control: Found Shorts section, removing it');
-        shelf.style.display = 'none';
-        shelf.remove(); // Completely remove from DOM
-      } else if (hasShortsIcon) {
-        console.log('YouTube Grid Control: Found Shorts section by icon, removing it');
-        shelf.style.display = 'none';
-        shelf.remove(); // Completely remove from DOM
-      }
-    });
-
-    // Also check for any rich-section-renderer containing Shorts
-    const sectionRenderers = document.querySelectorAll('ytd-rich-section-renderer');
-    sectionRenderers.forEach(section => {
-      const shelf = section.querySelector('ytd-rich-shelf-renderer');
-      if (shelf) {
-        const titleElement = shelf.querySelector('#title');
-        const hasShortsIcon = shelf.querySelector('path[d*="m19.45,3.88c1.12,1.82.48,4.15-1.42,5.22"]');
-
-        if ((titleElement && titleElement.textContent.trim() === 'Shorts') || hasShortsIcon) {
-          console.log('YouTube Grid Control: Found Shorts section in rich-section-renderer, removing it');
-          section.style.display = 'none';
-          section.remove(); // Completely remove from DOM
-        }
-      }
     });
   }
 

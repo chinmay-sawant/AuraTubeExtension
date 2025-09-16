@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Grid Control</title>
+  <style>
+    body {
+      width: 300px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 15px;
+      background: #f9f9f9;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      color: #333;
+      text-align: center;
+    }
+    .setting-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    select {
+      width: 100%;
+      padding: 6px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    button {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .apply-btn {
+      background: #ff0000;
+      color: white;
+    }
+    .apply-btn:hover {
+      background: #cc0000;
+    }
+    .options-btn {
+      background: #666;
+      color: white;
+    }
+    .options-btn:hover {
+      background: #555;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      text-align: center;
+      display: none;
+    }
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+    }
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+  </style>
+</head>
+<body>
+  <h1>YouTube Grid Control</h1>
+
+  <div class="setting-group">
+    <label for="columns">Columns:</label>
+    <select id="columns">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+
+  <div class="setting-group">
+    <label for="spacing">Spacing:</label>
+    <select id="spacing">
+      <option value="compact">Compact</option>
+      <option value="normal">Normal</option>
+      <option value="comfortable">Comfortable</option>
+    </select>
+  </div>
+
+  <div class="buttons">
+    <button class="apply-btn" id="apply">Apply</button>
+    <button class="options-btn" id="options">Options</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+/* Custom styles for YouTube Grid Control */
+
+/* Override default grid spacing */
+ytd-rich-grid-renderer {
+  --ytd-rich-grid-item-margin: 16px !important;
+}
+
+ytd-rich-shelf-renderer {
+  --ytd-rich-grid-item-margin: 16px !important;
+}
+
+/* Ensure grid items respect the custom columns */
+ytd-rich-item-renderer {
+  flex: 1 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Force grid layout override */
+#contents.style-scope.ytd-rich-grid-renderer {
+  display: grid !important;
+  width: 100% !important;
+}
+
+/* Custom spacing classes */
+.spacing-compact ytd-rich-grid-renderer,
+.spacing-compact ytd-rich-shelf-renderer {
+  --ytd-rich-grid-item-margin: 8px !important;
+}
+
+.spacing-normal ytd-rich-grid-renderer,
+.spacing-normal ytd-rich-shelf-renderer {
+  --ytd-rich-grid-item-margin: 16px !important;
+}
+
+.spacing-comfortable ytd-rich-grid-renderer,
+.spacing-comfortable ytd-rich-shelf-renderer {
+  --ytd-rich-grid-item-margin: 24px !important;
+}

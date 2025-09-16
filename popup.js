@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const columnsSelect = document.getElementById('columns');
   const spacingSelect = document.getElementById('spacing');
+  const removeShortsCheckbox = document.getElementById('remove-shorts');
   const applyButton = document.getElementById('apply');
   const optionsButton = document.getElementById('options');
   const statusDiv = document.getElementById('status');
@@ -17,20 +18,23 @@ document.addEventListener('DOMContentLoaded', function() {
   optionsButton.addEventListener('click', openOptions);
 
   function loadSettings() {
-    chrome.storage.sync.get(['columns', 'spacing'], function(result) {
-      columnsSelect.value = result.columns || '3';
+    chrome.storage.sync.get(['columns', 'spacing', 'removeShorts'], function(result) {
+      columnsSelect.value = result.columns || '5';
       spacingSelect.value = result.spacing || 'normal';
+      removeShortsCheckbox.checked = result.removeShorts || false;
     });
   }
 
   function applySettings() {
     const columns = columnsSelect.value;
     const spacing = spacingSelect.value;
+    const removeShorts = removeShortsCheckbox.checked;
 
     // Save to storage
     chrome.storage.sync.set({
       columns: columns,
-      spacing: spacing
+      spacing: spacing,
+      removeShorts: removeShorts
     }, function() {
       showStatus('Settings saved!', 'success');
 
@@ -41,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
           chrome.tabs.sendMessage(tabs[0].id, {
             action: 'applySettings',
             columns: columns,
-            spacing: spacing
+            spacing: spacing,
+            removeShorts: removeShorts
           }, function(response) {
             if (chrome.runtime.lastError) {
               console.log('Content script not available, settings will apply on page reload');

@@ -38,3 +38,18 @@ ytd-rich-item-renderer {
 .spacing-comfortable ytd-rich-shelf-renderer {
   --ytd-rich-grid-item-margin: 24px !important;
 }
+
+.spacing-continuous ytd-rich-grid-renderer,
+.spacing-continuous ytd-rich-shelf-renderer {
+  --ytd-rich-grid-item-margin: 0px !important;
+}
+
+/* Remove all spacing for continuous layout */
+.spacing-continuous #contents.style-scope.ytd-rich-grid-renderer {
+  gap: 0px !important;
+}
+
+.spacing-continuous ytd-rich-item-renderer {
+  margin: 0px !important;
+  padding: 0px !important;
+}

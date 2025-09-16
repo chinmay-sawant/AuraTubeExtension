@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Extension Documentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Aura Extension - YouTube Grid Control</h1>
+        <p>A Chrome extension that allows you to customize the grid layout on YouTube's homepage.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#files">File Structure</a></li>
+            <li><a href="#permissions">Permissions</a></li>
+            <li><a href="#compatibility">Browser Compatibility</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="quick-start">
+            <h2>🚀 Quick Start</h2>
+            <div class="quick-start-grid">
+                <div class="quick-step">
+                    <h3>1. Install</h3>
+                    <p>Load the extension in Chrome developer mode</p>
+                </div>
+                <div class="quick-step">
+                    <h3>2. Navigate</h3>
+                    <p>Go to YouTube homepage</p>
+                </div>
+                <div class="quick-step">
+                    <h3>3. Customize</h3>
+                    <p>Click extension icon and adjust settings</p>
+                </div>
+                <div class="quick-step">
+                    <h3>4. Enjoy</h3>
+                    <p>See your personalized grid layout</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2>✨ Features</h2>
+            <ul>
+                <li>🔢 <strong>Flexible Columns:</strong> Choose from 1-20 columns for your grid</li>
+                <li>📏 <strong>Spacing Options:</strong> Compact, Normal, or Comfortable spacing</li>
+                <li>⚡ <strong>Real-time Updates:</strong> Changes apply instantly without refresh</li>
+                <li>💾 <strong>Persistent Settings:</strong> Your preferences are saved automatically</li>
+                <li>🎨 <strong>Enhanced Template:</strong> Improved layout with better image sizing</li>
+            </ul>
+        </section>
+
+        <section id="installation">
+            <h2>Installation</h2>
+            <ol>
+                <li>Download or clone this repository</li>
+                <li>Open Chrome and go to <code>chrome://extensions/</code></li>
+                <li>Enable "Developer mode" in the top right</li>
+                <li>Click "Load unpacked" and select the <code>AuraExtension</code> folder</li>
+                <li>The extension should now be installed</li>
+            </ol>
+        </section>
+
+        <section id="usage">
+            <h2>Usage</h2>
+            <ol>
+                <li>Navigate to <a href="https://www.youtube.com" target="_blank">YouTube</a></li>
+                <li>Click the extension icon in the toolbar</li>
+                <li>Select your preferred number of columns and spacing</li>
+                <li>Click "Apply" to see changes immediately</li>
+                <li>For more options, click "Options" to open the full settings page</li>
+            </ol>
+        </section>
+
+        <section id="files">
+            <h2>File Structure</h2>
+            <ul>
+                <li><code>manifest.json</code> - Extension manifest</li>
+                <li><code>content.js</code> - Main content script that modifies YouTube's grid</li>
+                <li><code>styles.css</code> - Custom CSS for grid modifications</li>
+                <li><code>popup.html</code> - Quick access popup interface</li>
+                <li><code>popup.js</code> - Popup functionality</li>
+                <li><code>options.html</code> - Full settings page</li>
+                <li><code>options.js</code> - Options page functionality</li>
+                <li><code>icons/</code> - Folder containing extension icons
+                    <ul>
+                        <li><code>icon16.png</code> - 16x16 extension icon</li>
+                        <li><code>icon48.png</code> - 48x48 extension icon</li>
+                        <li><code>icon128.png</code> - 128x128 extension icon</li>
+                        <li><code>README.txt</code> - Icon documentation</li>
+                    </ul>
+                </li>
+                <li><code>improved_template.html</code> - Template for testing grid layouts</li>
+                <li><code>temp.html</code> - Temporary file for development</li>
+                <li><code>README.md</code> - Project documentation</li>
+            </ul>
+        </section>
+
+        <section id="permissions">
+            <h2>Permissions</h2>
+            <ul>
+                <li><code>activeTab</code> - To access the current YouTube tab</li>
+                <li><code>storage</code> - To save user preferences</li>
+            </ul>
+        </section>
+
+        <section id="compatibility">
+            <h2>Browser Compatibility</h2>
+            <ul>
+                <li>Chrome 88+</li>
+                <li>Edge 88+</li>
+                <li>Other Chromium-based browsers</li>
+            </ul>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>If the extension doesn't work:</p>
+            <ol>
+                <li>Make sure you're on youtube.com</li>
+                <li>Try refreshing the page after changing settings</li>
+                <li>Check that the extension is enabled in chrome://extensions/</li>
+                <li>Open Developer Tools and check for any console errors</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Aura Extension. This project is open source.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

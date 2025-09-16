@@ -35,16 +35,23 @@ A Chrome extension that allows you to customize the grid layout on YouTube's hom
 - `popup.js` - Popup functionality
 - `options.html` - Full settings page
 - `options.js` - Options page functionality
-- `icon16.png`, `icon48.png`, `icon128.png` - Extension icons (you need to create these)
+- `icons/` - Folder containing extension icons
+  - `icon16.png` - 16x16 extension icon
+  - `icon48.png` - 48x48 extension icon
+  - `icon128.png` - 128x128 extension icon
+  - `README.txt` - Icon documentation
+- `improved_template.html` - Template for testing grid layouts
+- `temp.html` - Temporary file for development
+- `README.md` - This documentation file
 
-## Creating Icons
+## Icons
 
-You need to create three icon files:
-- `icon16.png` - 16x16 pixels
-- `icon48.png` - 48x48 pixels
-- `icon128.png` - 128x128 pixels
+The extension uses three icon files located in the `icons/` folder:
+- `icon16.png` - 16x16 pixels (toolbar icon)
+- `icon48.png` - 48x48 pixels (extension page icon)
+- `icon128.png` - 128x128 pixels (store icon)
 
-You can use any image editor or online tools to create these. The icons should represent grid or layout control.
+These icons represent grid or layout control functionality.
 
 ## Improved Template
 
